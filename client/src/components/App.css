@@ -1,0 +1,23 @@
+.todo-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.todo-list {
+  width: 200px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.todo-container h1 {
+  text-align: center;
+}
+
+.todo-item {
+  padding: 5px 0;
+}
+
+.todo-item span{
+  float: right;
+}
