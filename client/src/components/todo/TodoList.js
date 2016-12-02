@@ -1,13 +1,23 @@
 import React from 'react'
 import TodoItem from './TodoItem'
+import { connect } from 'react-redux'
+import { getTodos } from '../../actions/todoActions'
 
 class TodoList extends React.Component {
   state = {
-    todos: [
-      { title: 'Buy Milk', completed: false },
-      { title: 'Learn React', completed: false },
-      { title: 'Eat Cookies', completed: false }
-    ]
+    todos: []
+  }
+
+  componentWillMount() {
+    this.props.getTodos()
+  }
+
+  componentDidUpdate(prevProps, nextProps) {
+    if(prevProps.todos.length === 0) {
+      this.setState({
+        todos: this.props.todos
+      })
+    }
   }
 
   render(){
@@ -30,4 +40,10 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList
+function mapStateToProps(state) {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps, { getTodos })(TodoList)
